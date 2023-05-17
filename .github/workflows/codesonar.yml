@@ -17,7 +17,7 @@ jobs:
       GITHUB_API_URL: https://api.github.com
       PULL_REQUEST_ID: ${{ github.event.pull_request.number }}
       ROOT_TREE: "Mark" 
-      RELEASE_PROJECT_NAME: "SAST-Demo"
+      RELEASE_PROJECT_NAME: "embedTLS"
       PROJECT_NAME: "Will be set in the first step"
       PROJECT_WORK_DIR: "embedTLS"
       PARALLEL: "12"
@@ -46,7 +46,7 @@ jobs:
       - name: Compile and Analyze
         run: >
             COMMIT_ID=$(git rev-parse --short ${{ github.sha }});
-            NAME="SAST_Demo-$BRANCH-$(date "+%Y.%m.%d-%H.%M")";
+            NAME="$RELEASE_PROJECT_NAME-$BRANCH-$(date "+%Y.%m.%d-%H.%M")";
             "$CODESONAR" analyze $BRANCH-$PROJECT_WORK_DIR
             -remote "/saas/*" -wait
             -auth password
