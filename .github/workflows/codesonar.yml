@@ -50,7 +50,7 @@ jobs:
             "$CODESONAR" analyze $BRANCH-$PROJECT_WORK_DIR
             -remote "/saas/*" -wait
             -auth password
-            -preset concurrency
+            -preset security
             -hubuser "$CSONAR_HUB_USER"
             -hubpwfile "$CSONAR_HUB_PWFILE"
             -project "$PROJECT_NAME"
