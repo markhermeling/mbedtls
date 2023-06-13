@@ -1,0 +1,5000 @@
+{
+  "version": "2.1.0",
+  "$schema": "https://docs.oasis-open.org/sarif/sarif/v2.1.0/cs01/schemas/sarif-schema-2.1.0.json",
+  "runs": [
+    {
+      "tool": {
+        "driver": {
+          "name": "codee",
+          "informationUri": "https://www.codee.com",
+          "version": "2023.1",
+          "rules": [
+            {
+              "id": "PWR001",
+              "defaultConfiguration": {
+                "level": "note"
+              },
+              "fullDescription": {
+                "text": "Declare global variables as function parameters"
+              },
+              "helpUri": "https://www.codee.com/knowledge/pwr001"
+            },
+            {
+              "id": "PWR002",
+              "defaultConfiguration": {
+                "level": "note"
+              },
+              "fullDescription": {
+                "text": "Declare scalar variables in the smallest possible scope"
+              },
+              "helpUri": "https://www.codee.com/knowledge/pwr002"
+            },
+            {
+              "id": "PWR020",
+              "defaultConfiguration": {
+                "level": "note"
+              },
+              "fullDescription": {
+                "text": "Consider loop fission to enable vectorization"
+              },
+              "helpUri": "https://www.codee.com/knowledge/pwr020"
+            },
+            {
+              "id": "PWR021",
+              "defaultConfiguration": {
+                "level": "note"
+              },
+              "fullDescription": {
+                "text": "Consider loop fission with scalar to vector promotion to enable vectorization"
+              },
+              "helpUri": "https://www.codee.com/knowledge/pwr021"
+            },
+            {
+              "id": "PWR036",
+              "defaultConfiguration": {
+                "level": "note"
+              },
+              "fullDescription": {
+                "text": "Avoid indirect array access to improve performance"
+              },
+              "helpUri": "https://www.codee.com/knowledge/pwr036"
+            },
+            {
+              "id": "RMK014",
+              "defaultConfiguration": {
+                "level": "note"
+              },
+              "fullDescription": {
+                "text": "The vectorization cost model states the loop is not a SIMD opportunity due to unpredictable memory accesses in the loop body"
+              },
+              "helpUri": "https://www.codee.com/knowledge/rmk014"
+            },
+            {
+              "id": "RMK010",
+              "defaultConfiguration": {
+                "level": "note"
+              },
+              "fullDescription": {
+                "text": "The vectorization cost model states the loop is not a SIMD opportunity due to strided memory accesses in the loop body"
+              },
+              "helpUri": "https://www.codee.com/knowledge/rmk010"
+            },
+            {
+              "id": "PWR028",
+              "defaultConfiguration": {
+                "level": "note"
+              },
+              "fullDescription": {
+                "text": "Remove pointer increment preventing performance optimization"
+              },
+              "helpUri": "https://www.codee.com/knowledge/pwr028"
+            },
+            {
+              "id": "PWR053",
+              "defaultConfiguration": {
+                "level": "note"
+              },
+              "fullDescription": {
+                "text": "Consider applying vectorization to forall loop"
+              },
+              "helpUri": "https://www.codee.com/knowledge/pwr053"
+            },
+            {
+              "id": "PWR024",
+              "defaultConfiguration": {
+                "level": "note"
+              },
+              "fullDescription": {
+                "text": "Loop can be rewritten in OpenMP canonical form"
+              },
+              "helpUri": "https://www.codee.com/knowledge/pwr024"
+            }
+          ]
+        }
+      },
+      "results": [
+        {
+          "ruleId": "PWR001",
+          "message": {
+            "text": "function 'aes_gen_tables' uses global variables 'RCON', 'FSb', 'RSb', 'FT0', 'FT1', 'FT2', 'FT3', 'RT0', 'RT1', 'RT2' and 'RT3'\n  Suggestion: consider passing 'RCON', 'FSb', 'RSb', 'FT0', 'FT1', 'FT2', 'FT3', 'RT0', 'RT1', 'RT2' and 'RT3' explicitly as arguments to the function 'aes_gen_tables' and use those variables instead; use the 'restrict' keyword for 'RCON', 'FSb', 'RSb', 'FT0', 'FT1', 'FT2', 'FT3', 'RT0', 'RT1', 'RT2' and 'RT3' to hint the compiler that they are free of aliasing\n"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 376,
+                  "startColumn": 1
+                }
+              }
+            }
+          ],
+          "relatedLocations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 397,
+                  "startColumn": 9
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 404,
+                  "startColumn": 5
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 417,
+                  "startColumn": 9
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 426,
+                  "startColumn": 13
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 405,
+                  "startColumn": 5
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 418,
+                  "startColumn": 9
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 441,
+                  "startColumn": 13
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 430,
+                  "startColumn": 9
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 436,
+                  "startColumn": 25
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 436,
+                  "startColumn": 25
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 436,
+                  "startColumn": 9
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 437,
+                  "startColumn": 25
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 437,
+                  "startColumn": 25
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 437,
+                  "startColumn": 9
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 438,
+                  "startColumn": 25
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 438,
+                  "startColumn": 25
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 438,
+                  "startColumn": 9
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 443,
+                  "startColumn": 9
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 449,
+                  "startColumn": 25
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 449,
+                  "startColumn": 25
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 449,
+                  "startColumn": 9
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 450,
+                  "startColumn": 25
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 450,
+                  "startColumn": 25
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 450,
+                  "startColumn": 9
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 451,
+                  "startColumn": 25
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 451,
+                  "startColumn": 25
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 451,
+                  "startColumn": 9
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "PWR002",
+          "message": {
+            "text": "'x' not declared in the innermost scope possible\n  Suggestion: add a new declaration of 'x' at the beginning of the loop. This new declared variable shadows the previous one; alternatively, you may use a different name within the loop to be more explicit\n"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 378,
+                  "startColumn": 12
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "PWR002",
+          "message": {
+            "text": "'y' not declared in the innermost scope possible\n  Suggestion: add a new declaration of 'y' at the beginning of the loop. This new declared variable shadows the previous one; alternatively, you may use a different name within the loop to be more explicit\n"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 378,
+                  "startColumn": 15
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "PWR020",
+          "message": {
+            "text": "consider loop fission to enable vectorization\n  Suggestion: Extract the 'FSb' vectorizable computation to a new loop isolated from the 'RSb' non-vectorizable computation\n"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 407,
+                  "startColumn": 5
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "PWR021",
+          "message": {
+            "text": "extract temporary computations to a vectorizable loop\n  Suggestion: promote to arrays the following temporary variables: 'x' and 'y'; then create a preceding loop computing the temporary arrays and finish with changing the temporary uses to use the temporary arrays\n"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 407,
+                  "startColumn": 5
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "PWR036",
+          "message": {
+            "text": "avoid indirect array access for variable 'pow' to improve performance\n  Suggestion: consider using techniques like loop fusion, loop interchange, loop tiling or changing the data layout to avoid non-sequential access to variable 'pow'.\n"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 407,
+                  "startColumn": 5
+                }
+              }
+            }
+          ],
+          "relatedLocations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 409,
+                  "startColumn": 13
+                }
+              },
+              "message": {
+                "text": "Non-consecutive array access"
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "PWR002",
+          "message": {
+            "text": "'z' not declared in the innermost scope possible\n  Suggestion: move the declaration of 'z' to the beginning of the loop\n"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 378,
+                  "startColumn": 18
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "PWR002",
+          "message": {
+            "text": "'y' not declared in the innermost scope possible\n  Suggestion: add a new declaration of 'y' at the beginning of the loop. This new declared variable shadows the previous one; alternatively, you may use a different name within the loop to be more explicit\n"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 378,
+                  "startColumn": 15
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "PWR002",
+          "message": {
+            "text": "'x' not declared in the innermost scope possible\n  Suggestion: add a new declaration of 'x' at the beginning of the loop. This new declared variable shadows the previous one; alternatively, you may use a different name within the loop to be more explicit\n"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 378,
+                  "startColumn": 12
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "PWR036",
+          "message": {
+            "text": "avoid indirect array access for variable 'pow' to improve performance\n  Suggestion: consider using techniques like loop fusion, loop interchange, loop tiling or changing the data layout to avoid non-sequential access to variable 'pow'.\n"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 424,
+                  "startColumn": 5
+                }
+              }
+            }
+          ],
+          "relatedLocations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 446,
+                  "startColumn": 31
+                }
+              },
+              "message": {
+                "text": "Non-consecutive array access"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 443,
+                  "startColumn": 31
+                }
+              },
+              "message": {
+                "text": "Non-consecutive array access"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 445,
+                  "startColumn": 31
+                }
+              },
+              "message": {
+                "text": "Non-consecutive array access"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 444,
+                  "startColumn": 31
+                }
+              },
+              "message": {
+                "text": "Non-consecutive array access"
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "RMK014",
+          "message": {
+            "text": "the vectorization cost model states the loop is not a SIMD opportunity due to unpredictable memory accesses in the loop body\n"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 424,
+                  "startColumn": 5
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "PWR001",
+          "message": {
+            "text": "function 'mbedtls_aes_setkey_enc' uses global variables 'aes_init_done', 'RCON' and 'FSb'\n  Suggestion: consider passing 'aes_init_done', 'RCON' and 'FSb' explicitly as arguments to the function 'mbedtls_aes_setkey_enc' and use those variables instead; use the 'restrict' keyword for 'aes_init_done', 'RCON' and 'FSb' to hint the compiler that they are free of aliasing\n"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 528,
+                  "startColumn": 1
+                }
+              }
+            }
+          ],
+          "relatedLocations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 546,
+                  "startColumn": 9
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 549,
+                  "startColumn": 9
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 579,
+                  "startColumn": 34
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 595,
+                  "startColumn": 34
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 613,
+                  "startColumn": 34
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 580,
+                  "startColumn": 30
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 581,
+                  "startColumn": 30
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 582,
+                  "startColumn": 30
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 583,
+                  "startColumn": 30
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 596,
+                  "startColumn": 30
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 597,
+                  "startColumn": 30
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 598,
+                  "startColumn": 30
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 599,
+                  "startColumn": 30
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 614,
+                  "startColumn": 30
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 615,
+                  "startColumn": 30
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 616,
+                  "startColumn": 30
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 617,
+                  "startColumn": 30
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 624,
+                  "startColumn": 30
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 625,
+                  "startColumn": 30
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 626,
+                  "startColumn": 30
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 627,
+                  "startColumn": 30
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "RMK010",
+          "message": {
+            "text": "the vectorization cost model states the loop is not a SIMD opportunity due to strided memory accesses in the loop body\n"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 568,
+                  "startColumn": 5
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "PWR028",
+          "message": {
+            "text": "remove pointer increment 'RK' preventing performance optimization\n  Suggestion: remove the pointer increment instruction from the loop body and update the dereferences accordingly\n"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 577,
+                  "startColumn": 41
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "PWR036",
+          "message": {
+            "text": "avoid indirect array access for variable 'FSb' to improve performance\n  Suggestion: consider using techniques like loop fusion, loop interchange, loop tiling or changing the data layout to avoid non-sequential access to variable 'FSb'.\n"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 577,
+                  "startColumn": 13
+                }
+              }
+            }
+          ],
+          "relatedLocations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 583,
+                  "startColumn": 30
+                }
+              },
+              "message": {
+                "text": "Non-consecutive array access"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 582,
+                  "startColumn": 30
+                }
+              },
+              "message": {
+                "text": "Non-consecutive array access"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 581,
+                  "startColumn": 30
+                }
+              },
+              "message": {
+                "text": "Non-consecutive array access"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 580,
+                  "startColumn": 30
+                }
+              },
+              "message": {
+                "text": "Non-consecutive array access"
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "PWR028",
+          "message": {
+            "text": "remove pointer increment 'RK' preventing performance optimization\n  Suggestion: remove the pointer increment instruction from the loop body and update the dereferences accordingly\n"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 593,
+                  "startColumn": 40
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "PWR036",
+          "message": {
+            "text": "avoid indirect array access for variable 'FSb' to improve performance\n  Suggestion: consider using techniques like loop fusion, loop interchange, loop tiling or changing the data layout to avoid non-sequential access to variable 'FSb'.\n"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 593,
+                  "startColumn": 13
+                }
+              }
+            }
+          ],
+          "relatedLocations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 599,
+                  "startColumn": 30
+                }
+              },
+              "message": {
+                "text": "Non-consecutive array access"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 598,
+                  "startColumn": 30
+                }
+              },
+              "message": {
+                "text": "Non-consecutive array access"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 597,
+                  "startColumn": 30
+                }
+              },
+              "message": {
+                "text": "Non-consecutive array access"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 596,
+                  "startColumn": 30
+                }
+              },
+              "message": {
+                "text": "Non-consecutive array access"
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "PWR028",
+          "message": {
+            "text": "remove pointer increment 'RK' preventing performance optimization\n  Suggestion: remove the pointer increment instruction from the loop body and update the dereferences accordingly\n"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 611,
+                  "startColumn": 40
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "PWR036",
+          "message": {
+            "text": "avoid indirect array access for variable 'FSb' to improve performance\n  Suggestion: consider using techniques like loop fusion, loop interchange, loop tiling or changing the data layout to avoid non-sequential access to variable 'FSb'.\n"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 611,
+                  "startColumn": 13
+                }
+              }
+            }
+          ],
+          "relatedLocations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 627,
+                  "startColumn": 30
+                }
+              },
+              "message": {
+                "text": "Non-consecutive array access"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 626,
+                  "startColumn": 30
+                }
+              },
+              "message": {
+                "text": "Non-consecutive array access"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 625,
+                  "startColumn": 30
+                }
+              },
+              "message": {
+                "text": "Non-consecutive array access"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 624,
+                  "startColumn": 30
+                }
+              },
+              "message": {
+                "text": "Non-consecutive array access"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 617,
+                  "startColumn": 30
+                }
+              },
+              "message": {
+                "text": "Non-consecutive array access"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 616,
+                  "startColumn": 30
+                }
+              },
+              "message": {
+                "text": "Non-consecutive array access"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 615,
+                  "startColumn": 30
+                }
+              },
+              "message": {
+                "text": "Non-consecutive array access"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 614,
+                  "startColumn": 30
+                }
+              },
+              "message": {
+                "text": "Non-consecutive array access"
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "PWR001",
+          "message": {
+            "text": "function 'mbedtls_aes_setkey_dec' uses global variables 'RT0', 'FSb', 'RT1', 'RT2' and 'RT3'\n  Suggestion: consider passing 'RT0', 'FSb', 'RT1', 'RT2' and 'RT3' explicitly as arguments to the function 'mbedtls_aes_setkey_dec' and use those variables instead; use the 'restrict' keyword for 'RT0', 'FSb', 'RT1', 'RT2' and 'RT3' to hint the compiler that they are free of aliasing\n"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 644,
+                  "startColumn": 1
+                }
+              }
+            }
+          ],
+          "relatedLocations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 693,
+                  "startColumn": 21
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 693,
+                  "startColumn": 30
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 694,
+                  "startColumn": 30
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 695,
+                  "startColumn": 30
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 696,
+                  "startColumn": 30
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 694,
+                  "startColumn": 21
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 695,
+                  "startColumn": 21
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 696,
+                  "startColumn": 21
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "PWR001",
+          "message": {
+            "text": "function 'mbedtls_internal_aes_encrypt' uses global variables 'FT0', 'FT1', 'FT2', 'FT3' and 'FSb'\n  Suggestion: consider passing 'FT0', 'FT1', 'FT2', 'FT3' and 'FSb' explicitly as arguments to the function 'mbedtls_internal_aes_encrypt' and use those variables instead; use the 'restrict' keyword for 'FT0', 'FT1', 'FT2', 'FT3' and 'FSb' to hint the compiler that they are free of aliasing\n"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 841,
+                  "startColumn": 1
+                }
+              }
+            }
+          ],
+          "relatedLocations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 860,
+                  "startColumn": 9
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 860,
+                  "startColumn": 9
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 860,
+                  "startColumn": 9
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 860,
+                  "startColumn": 9
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 861,
+                  "startColumn": 9
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 861,
+                  "startColumn": 9
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 861,
+                  "startColumn": 9
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 861,
+                  "startColumn": 9
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 864,
+                  "startColumn": 5
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 864,
+                  "startColumn": 5
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 864,
+                  "startColumn": 5
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 864,
+                  "startColumn": 5
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 860,
+                  "startColumn": 9
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 860,
+                  "startColumn": 9
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 860,
+                  "startColumn": 9
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 860,
+                  "startColumn": 9
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 861,
+                  "startColumn": 9
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 861,
+                  "startColumn": 9
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 861,
+                  "startColumn": 9
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 861,
+                  "startColumn": 9
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 864,
+                  "startColumn": 5
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 864,
+                  "startColumn": 5
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 864,
+                  "startColumn": 5
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 864,
+                  "startColumn": 5
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 860,
+                  "startColumn": 9
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 860,
+                  "startColumn": 9
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 860,
+                  "startColumn": 9
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 860,
+                  "startColumn": 9
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 861,
+                  "startColumn": 9
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 861,
+                  "startColumn": 9
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 861,
+                  "startColumn": 9
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 861,
+                  "startColumn": 9
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 864,
+                  "startColumn": 5
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 864,
+                  "startColumn": 5
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 864,
+                  "startColumn": 5
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 864,
+                  "startColumn": 5
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 860,
+                  "startColumn": 9
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 860,
+                  "startColumn": 9
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 860,
+                  "startColumn": 9
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 860,
+                  "startColumn": 9
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 861,
+                  "startColumn": 9
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 861,
+                  "startColumn": 9
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 861,
+                  "startColumn": 9
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 861,
+                  "startColumn": 9
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 864,
+                  "startColumn": 5
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 864,
+                  "startColumn": 5
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 864,
+                  "startColumn": 5
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 864,
+                  "startColumn": 5
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 867,
+                  "startColumn": 26
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 868,
+                  "startColumn": 26
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 869,
+                  "startColumn": 26
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 870,
+                  "startColumn": 26
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 873,
+                  "startColumn": 26
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 874,
+                  "startColumn": 26
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 875,
+                  "startColumn": 26
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 876,
+                  "startColumn": 26
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 879,
+                  "startColumn": 26
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 880,
+                  "startColumn": 26
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 881,
+                  "startColumn": 26
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 882,
+                  "startColumn": 26
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 885,
+                  "startColumn": 26
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 886,
+                  "startColumn": 26
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 887,
+                  "startColumn": 26
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 888,
+                  "startColumn": 26
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "PWR036",
+          "message": {
+            "text": "avoid indirect array access for variables 'FT3', 'FT2', 'FT1' and 'FT0' to improve performance\n  Suggestion: consider using techniques like loop fusion, loop interchange, loop tiling or changing the data layout to avoid non-sequential access to variables 'FT3', 'FT2', 'FT1' and 'FT0'.\n"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 858,
+                  "startColumn": 5
+                }
+              }
+            }
+          ],
+          "relatedLocations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 861,
+                  "startColumn": 9
+                }
+              },
+              "message": {
+                "text": "Non-consecutive array access"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 861,
+                  "startColumn": 9
+                }
+              },
+              "message": {
+                "text": "Non-consecutive array access"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 861,
+                  "startColumn": 9
+                }
+              },
+              "message": {
+                "text": "Non-consecutive array access"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 861,
+                  "startColumn": 9
+                }
+              },
+              "message": {
+                "text": "Non-consecutive array access"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 860,
+                  "startColumn": 9
+                }
+              },
+              "message": {
+                "text": "Non-consecutive array access"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 860,
+                  "startColumn": 9
+                }
+              },
+              "message": {
+                "text": "Non-consecutive array access"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 860,
+                  "startColumn": 9
+                }
+              },
+              "message": {
+                "text": "Non-consecutive array access"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 860,
+                  "startColumn": 9
+                }
+              },
+              "message": {
+                "text": "Non-consecutive array access"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 861,
+                  "startColumn": 9
+                }
+              },
+              "message": {
+                "text": "Non-consecutive array access"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 861,
+                  "startColumn": 9
+                }
+              },
+              "message": {
+                "text": "Non-consecutive array access"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 861,
+                  "startColumn": 9
+                }
+              },
+              "message": {
+                "text": "Non-consecutive array access"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 861,
+                  "startColumn": 9
+                }
+              },
+              "message": {
+                "text": "Non-consecutive array access"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 860,
+                  "startColumn": 9
+                }
+              },
+              "message": {
+                "text": "Non-consecutive array access"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 860,
+                  "startColumn": 9
+                }
+              },
+              "message": {
+                "text": "Non-consecutive array access"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 860,
+                  "startColumn": 9
+                }
+              },
+              "message": {
+                "text": "Non-consecutive array access"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 860,
+                  "startColumn": 9
+                }
+              },
+              "message": {
+                "text": "Non-consecutive array access"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 861,
+                  "startColumn": 9
+                }
+              },
+              "message": {
+                "text": "Non-consecutive array access"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 861,
+                  "startColumn": 9
+                }
+              },
+              "message": {
+                "text": "Non-consecutive array access"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 861,
+                  "startColumn": 9
+                }
+              },
+              "message": {
+                "text": "Non-consecutive array access"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 861,
+                  "startColumn": 9
+                }
+              },
+              "message": {
+                "text": "Non-consecutive array access"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 860,
+                  "startColumn": 9
+                }
+              },
+              "message": {
+                "text": "Non-consecutive array access"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 860,
+                  "startColumn": 9
+                }
+              },
+              "message": {
+                "text": "Non-consecutive array access"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 860,
+                  "startColumn": 9
+                }
+              },
+              "message": {
+                "text": "Non-consecutive array access"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 860,
+                  "startColumn": 9
+                }
+              },
+              "message": {
+                "text": "Non-consecutive array access"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 861,
+                  "startColumn": 9
+                }
+              },
+              "message": {
+                "text": "Non-consecutive array access"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 861,
+                  "startColumn": 9
+                }
+              },
+              "message": {
+                "text": "Non-consecutive array access"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 861,
+                  "startColumn": 9
+                }
+              },
+              "message": {
+                "text": "Non-consecutive array access"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 861,
+                  "startColumn": 9
+                }
+              },
+              "message": {
+                "text": "Non-consecutive array access"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 860,
+                  "startColumn": 9
+                }
+              },
+              "message": {
+                "text": "Non-consecutive array access"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 860,
+                  "startColumn": 9
+                }
+              },
+              "message": {
+                "text": "Non-consecutive array access"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 860,
+                  "startColumn": 9
+                }
+              },
+              "message": {
+                "text": "Non-consecutive array access"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 860,
+                  "startColumn": 9
+                }
+              },
+              "message": {
+                "text": "Non-consecutive array access"
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "PWR001",
+          "message": {
+            "text": "function 'mbedtls_internal_aes_decrypt' uses global variables 'RT0', 'RT1', 'RT2', 'RT3' and 'RSb'\n  Suggestion: consider passing 'RT0', 'RT1', 'RT2', 'RT3' and 'RSb' explicitly as arguments to the function 'mbedtls_internal_aes_decrypt' and use those variables instead; use the 'restrict' keyword for 'RT0', 'RT1', 'RT2', 'RT3' and 'RSb' to hint the compiler that they are free of aliasing\n"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 905,
+                  "startColumn": 1
+                }
+              }
+            }
+          ],
+          "relatedLocations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 924,
+                  "startColumn": 9
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 924,
+                  "startColumn": 9
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 924,
+                  "startColumn": 9
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 924,
+                  "startColumn": 9
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 925,
+                  "startColumn": 9
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 925,
+                  "startColumn": 9
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 925,
+                  "startColumn": 9
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 925,
+                  "startColumn": 9
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 928,
+                  "startColumn": 5
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 928,
+                  "startColumn": 5
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 928,
+                  "startColumn": 5
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 928,
+                  "startColumn": 5
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 924,
+                  "startColumn": 9
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 924,
+                  "startColumn": 9
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 924,
+                  "startColumn": 9
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 924,
+                  "startColumn": 9
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 925,
+                  "startColumn": 9
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 925,
+                  "startColumn": 9
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 925,
+                  "startColumn": 9
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 925,
+                  "startColumn": 9
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 928,
+                  "startColumn": 5
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 928,
+                  "startColumn": 5
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 928,
+                  "startColumn": 5
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 928,
+                  "startColumn": 5
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 924,
+                  "startColumn": 9
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 924,
+                  "startColumn": 9
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 924,
+                  "startColumn": 9
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 924,
+                  "startColumn": 9
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 925,
+                  "startColumn": 9
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 925,
+                  "startColumn": 9
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 925,
+                  "startColumn": 9
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 925,
+                  "startColumn": 9
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 928,
+                  "startColumn": 5
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 928,
+                  "startColumn": 5
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 928,
+                  "startColumn": 5
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 928,
+                  "startColumn": 5
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 924,
+                  "startColumn": 9
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 924,
+                  "startColumn": 9
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 924,
+                  "startColumn": 9
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 924,
+                  "startColumn": 9
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 925,
+                  "startColumn": 9
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 925,
+                  "startColumn": 9
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 925,
+                  "startColumn": 9
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 925,
+                  "startColumn": 9
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 928,
+                  "startColumn": 5
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 928,
+                  "startColumn": 5
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 928,
+                  "startColumn": 5
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 928,
+                  "startColumn": 5
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 931,
+                  "startColumn": 26
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 932,
+                  "startColumn": 26
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 933,
+                  "startColumn": 26
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 934,
+                  "startColumn": 26
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 937,
+                  "startColumn": 26
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 938,
+                  "startColumn": 26
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 939,
+                  "startColumn": 26
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 940,
+                  "startColumn": 26
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 943,
+                  "startColumn": 26
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 944,
+                  "startColumn": 26
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 945,
+                  "startColumn": 26
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 946,
+                  "startColumn": 26
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 949,
+                  "startColumn": 26
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 950,
+                  "startColumn": 26
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 951,
+                  "startColumn": 26
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 952,
+                  "startColumn": 26
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "PWR036",
+          "message": {
+            "text": "avoid indirect array access for variables 'RT3', 'RT2', 'RT1' and 'RT0' to improve performance\n  Suggestion: consider using techniques like loop fusion, loop interchange, loop tiling or changing the data layout to avoid non-sequential access to variables 'RT3', 'RT2', 'RT1' and 'RT0'.\n"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 922,
+                  "startColumn": 5
+                }
+              }
+            }
+          ],
+          "relatedLocations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 925,
+                  "startColumn": 9
+                }
+              },
+              "message": {
+                "text": "Non-consecutive array access"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 925,
+                  "startColumn": 9
+                }
+              },
+              "message": {
+                "text": "Non-consecutive array access"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 925,
+                  "startColumn": 9
+                }
+              },
+              "message": {
+                "text": "Non-consecutive array access"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 925,
+                  "startColumn": 9
+                }
+              },
+              "message": {
+                "text": "Non-consecutive array access"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 924,
+                  "startColumn": 9
+                }
+              },
+              "message": {
+                "text": "Non-consecutive array access"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 924,
+                  "startColumn": 9
+                }
+              },
+              "message": {
+                "text": "Non-consecutive array access"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 924,
+                  "startColumn": 9
+                }
+              },
+              "message": {
+                "text": "Non-consecutive array access"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 924,
+                  "startColumn": 9
+                }
+              },
+              "message": {
+                "text": "Non-consecutive array access"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 925,
+                  "startColumn": 9
+                }
+              },
+              "message": {
+                "text": "Non-consecutive array access"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 925,
+                  "startColumn": 9
+                }
+              },
+              "message": {
+                "text": "Non-consecutive array access"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 925,
+                  "startColumn": 9
+                }
+              },
+              "message": {
+                "text": "Non-consecutive array access"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 925,
+                  "startColumn": 9
+                }
+              },
+              "message": {
+                "text": "Non-consecutive array access"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 924,
+                  "startColumn": 9
+                }
+              },
+              "message": {
+                "text": "Non-consecutive array access"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 924,
+                  "startColumn": 9
+                }
+              },
+              "message": {
+                "text": "Non-consecutive array access"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 924,
+                  "startColumn": 9
+                }
+              },
+              "message": {
+                "text": "Non-consecutive array access"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 924,
+                  "startColumn": 9
+                }
+              },
+              "message": {
+                "text": "Non-consecutive array access"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 925,
+                  "startColumn": 9
+                }
+              },
+              "message": {
+                "text": "Non-consecutive array access"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 925,
+                  "startColumn": 9
+                }
+              },
+              "message": {
+                "text": "Non-consecutive array access"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 925,
+                  "startColumn": 9
+                }
+              },
+              "message": {
+                "text": "Non-consecutive array access"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 925,
+                  "startColumn": 9
+                }
+              },
+              "message": {
+                "text": "Non-consecutive array access"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 924,
+                  "startColumn": 9
+                }
+              },
+              "message": {
+                "text": "Non-consecutive array access"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 924,
+                  "startColumn": 9
+                }
+              },
+              "message": {
+                "text": "Non-consecutive array access"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 924,
+                  "startColumn": 9
+                }
+              },
+              "message": {
+                "text": "Non-consecutive array access"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 924,
+                  "startColumn": 9
+                }
+              },
+              "message": {
+                "text": "Non-consecutive array access"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 925,
+                  "startColumn": 9
+                }
+              },
+              "message": {
+                "text": "Non-consecutive array access"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 925,
+                  "startColumn": 9
+                }
+              },
+              "message": {
+                "text": "Non-consecutive array access"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 925,
+                  "startColumn": 9
+                }
+              },
+              "message": {
+                "text": "Non-consecutive array access"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 925,
+                  "startColumn": 9
+                }
+              },
+              "message": {
+                "text": "Non-consecutive array access"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 924,
+                  "startColumn": 9
+                }
+              },
+              "message": {
+                "text": "Non-consecutive array access"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 924,
+                  "startColumn": 9
+                }
+              },
+              "message": {
+                "text": "Non-consecutive array access"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 924,
+                  "startColumn": 9
+                }
+              },
+              "message": {
+                "text": "Non-consecutive array access"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 924,
+                  "startColumn": 9
+                }
+              },
+              "message": {
+                "text": "Non-consecutive array access"
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "PWR053",
+          "message": {
+            "text": "consider applying vectorization to forall loop\n  Suggestion: use pwdirectives to automatically optimize the code\n  AutoFix (choose one option):\n    * Using OpenMP pragmas (recommended):\n        /home/diego/Downloads/codee-2023.1-g2001e86fde4d-Nightly/bin/pwdirectives --vector omp --in-place /home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c:1048:13 --config build/compile_commands.json\n    * Using Clang compiler pragmas:\n        /home/diego/Downloads/codee-2023.1-g2001e86fde4d-Nightly/bin/pwdirectives --vector clang --in-place /home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c:1048:13 --config build/compile_commands.json\n    * Using GCC pragmas\n        /home/diego/Downloads/codee-2023.1-g2001e86fde4d-Nightly/bin/pwdirectives --vector gcc --in-place /home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c:1048:13 --config build/compile_commands.json\n    * Using ICC pragmas:\n        /home/diego/Downloads/codee-2023.1-g2001e86fde4d-Nightly/bin/pwdirectives --vector icc --in-place /home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c:1048:13 --config build/compile_commands.json\n"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 1048,
+                  "startColumn": 13
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "PWR053",
+          "message": {
+            "text": "consider applying vectorization to forall loop\n  Suggestion: use pwdirectives to automatically optimize the code\n  AutoFix (choose one option):\n    * Using OpenMP pragmas (recommended):\n        /home/diego/Downloads/codee-2023.1-g2001e86fde4d-Nightly/bin/pwdirectives --vector omp --in-place /home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c:1062:13 --config build/compile_commands.json\n    * Using Clang compiler pragmas:\n        /home/diego/Downloads/codee-2023.1-g2001e86fde4d-Nightly/bin/pwdirectives --vector clang --in-place /home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c:1062:13 --config build/compile_commands.json\n    * Using GCC pragmas\n        /home/diego/Downloads/codee-2023.1-g2001e86fde4d-Nightly/bin/pwdirectives --vector gcc --in-place /home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c:1062:13 --config build/compile_commands.json\n    * Using ICC pragmas:\n        /home/diego/Downloads/codee-2023.1-g2001e86fde4d-Nightly/bin/pwdirectives --vector icc --in-place /home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c:1062:13 --config build/compile_commands.json\n"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 1062,
+                  "startColumn": 13
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "PWR053",
+          "message": {
+            "text": "consider applying vectorization to forall loop\n  Suggestion: use pwdirectives to automatically optimize the code\n  AutoFix (choose one option):\n    * Using OpenMP pragmas (recommended):\n        /home/diego/Downloads/codee-2023.1-g2001e86fde4d-Nightly/bin/pwdirectives --vector omp --in-place /home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c:1162:9 --config build/compile_commands.json\n    * Using Clang compiler pragmas:\n        /home/diego/Downloads/codee-2023.1-g2001e86fde4d-Nightly/bin/pwdirectives --vector clang --in-place /home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c:1162:9 --config build/compile_commands.json\n    * Using GCC pragmas\n        /home/diego/Downloads/codee-2023.1-g2001e86fde4d-Nightly/bin/pwdirectives --vector gcc --in-place /home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c:1162:9 --config build/compile_commands.json\n    * Using ICC pragmas:\n        /home/diego/Downloads/codee-2023.1-g2001e86fde4d-Nightly/bin/pwdirectives --vector icc --in-place /home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c:1162:9 --config build/compile_commands.json\n"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 1162,
+                  "startColumn": 9
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "PWR053",
+          "message": {
+            "text": "consider applying vectorization to forall loop\n  Suggestion: use pwdirectives to automatically optimize the code\n  AutoFix (choose one option):\n    * Using OpenMP pragmas (recommended):\n        /home/diego/Downloads/codee-2023.1-g2001e86fde4d-Nightly/bin/pwdirectives --vector omp --in-place /home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c:1169:9 --config build/compile_commands.json\n    * Using Clang compiler pragmas:\n        /home/diego/Downloads/codee-2023.1-g2001e86fde4d-Nightly/bin/pwdirectives --vector clang --in-place /home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c:1169:9 --config build/compile_commands.json\n    * Using GCC pragmas\n        /home/diego/Downloads/codee-2023.1-g2001e86fde4d-Nightly/bin/pwdirectives --vector gcc --in-place /home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c:1169:9 --config build/compile_commands.json\n    * Using ICC pragmas:\n        /home/diego/Downloads/codee-2023.1-g2001e86fde4d-Nightly/bin/pwdirectives --vector icc --in-place /home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c:1169:9 --config build/compile_commands.json\n"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 1169,
+                  "startColumn": 9
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "PWR053",
+          "message": {
+            "text": "consider applying vectorization to forall loop\n  Suggestion: use pwdirectives to automatically optimize the code\n  AutoFix (choose one option):\n    * Using OpenMP pragmas (recommended):\n        /home/diego/Downloads/codee-2023.1-g2001e86fde4d-Nightly/bin/pwdirectives --vector omp --in-place /home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c:1194:9 --config build/compile_commands.json\n    * Using Clang compiler pragmas:\n        /home/diego/Downloads/codee-2023.1-g2001e86fde4d-Nightly/bin/pwdirectives --vector clang --in-place /home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c:1194:9 --config build/compile_commands.json\n    * Using GCC pragmas\n        /home/diego/Downloads/codee-2023.1-g2001e86fde4d-Nightly/bin/pwdirectives --vector gcc --in-place /home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c:1194:9 --config build/compile_commands.json\n    * Using ICC pragmas:\n        /home/diego/Downloads/codee-2023.1-g2001e86fde4d-Nightly/bin/pwdirectives --vector icc --in-place /home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c:1194:9 --config build/compile_commands.json\n"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 1194,
+                  "startColumn": 9
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "PWR024",
+          "message": {
+            "text": "the loop is currently not in OpenMP canonical form\n  Suggestion: rewrite the loop in order to comply with the OpenMP Canonical Loop Form\n"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 1202,
+                  "startColumn": 9
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "PWR053",
+          "message": {
+            "text": "consider applying vectorization to forall loop\n  Suggestion: use pwdirectives to automatically optimize the code\n  AutoFix (choose one option):\n    * Using OpenMP pragmas (recommended):\n        /home/diego/Downloads/codee-2023.1-g2001e86fde4d-Nightly/bin/pwdirectives --vector omp --in-place /home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c:1202:9 --config build/compile_commands.json\n    * Using Clang compiler pragmas:\n        /home/diego/Downloads/codee-2023.1-g2001e86fde4d-Nightly/bin/pwdirectives --vector clang --in-place /home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c:1202:9 --config build/compile_commands.json\n    * Using GCC pragmas\n        /home/diego/Downloads/codee-2023.1-g2001e86fde4d-Nightly/bin/pwdirectives --vector gcc --in-place /home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c:1202:9 --config build/compile_commands.json\n    * Using ICC pragmas:\n        /home/diego/Downloads/codee-2023.1-g2001e86fde4d-Nightly/bin/pwdirectives --vector icc --in-place /home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c:1202:9 --config build/compile_commands.json\n"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 1202,
+                  "startColumn": 9
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "PWR053",
+          "message": {
+            "text": "consider applying vectorization to forall loop\n  Suggestion: use pwdirectives to automatically optimize the code\n  AutoFix (choose one option):\n    * Using OpenMP pragmas (recommended):\n        /home/diego/Downloads/codee-2023.1-g2001e86fde4d-Nightly/bin/pwdirectives --vector omp --in-place /home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c:1211:9 --config build/compile_commands.json\n    * Using Clang compiler pragmas:\n        /home/diego/Downloads/codee-2023.1-g2001e86fde4d-Nightly/bin/pwdirectives --vector clang --in-place /home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c:1211:9 --config build/compile_commands.json\n    * Using GCC pragmas\n        /home/diego/Downloads/codee-2023.1-g2001e86fde4d-Nightly/bin/pwdirectives --vector gcc --in-place /home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c:1211:9 --config build/compile_commands.json\n    * Using ICC pragmas:\n        /home/diego/Downloads/codee-2023.1-g2001e86fde4d-Nightly/bin/pwdirectives --vector icc --in-place /home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c:1211:9 --config build/compile_commands.json\n"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 1211,
+                  "startColumn": 9
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "PWR001",
+          "message": {
+            "text": "function 'mbedtls_aes_self_test' uses global variables 'aes_test_ecb_dec', 'aes_test_ecb_enc', 'aes_test_cbc_dec', 'aes_test_cbc_enc', 'aes_test_cfb128_iv', 'aes_test_cfb128_key', 'aes_test_cfb128_ct', 'aes_test_cfb128_pt', 'aes_test_ofb_iv', 'aes_test_ofb_key', 'aes_test_ofb_ct', 'aes_test_ofb_pt', 'aes_test_ctr_nonce_counter', 'aes_test_ctr_key', 'aes_test_ctr_len', 'aes_test_ctr_ct', 'aes_test_ctr_pt', 'aes_test_xts_key', 'num_tests', 'aes_test_xts_data_unit', 'aes_test_xts_ct32' and 'aes_test_xts_pt32'\n  Suggestion: consider passing 'aes_test_ecb_dec', 'aes_test_ecb_enc', 'aes_test_cbc_dec', 'aes_test_cbc_enc', 'aes_test_cfb128_iv', 'aes_test_cfb128_key', 'aes_test_cfb128_ct', 'aes_test_cfb128_pt', 'aes_test_ofb_iv', 'aes_test_ofb_key', 'aes_test_ofb_ct', 'aes_test_ofb_pt', 'aes_test_ctr_nonce_counter', 'aes_test_ctr_key', 'aes_test_ctr_len', 'aes_test_ctr_ct', 'aes_test_ctr_pt', 'aes_test_xts_key', 'num_tests', 'aes_test_xts_data_unit', 'aes_test_xts_ct32' and 'aes_test_xts_pt32' explicitly as arguments to the function 'mbedtls_aes_self_test' and use those variables instead; use the 'restrict' keyword for 'aes_test_ecb_dec', 'aes_test_ecb_enc', 'aes_test_cbc_dec', 'aes_test_cbc_enc', 'aes_test_cfb128_iv', 'aes_test_cfb128_key', 'aes_test_cfb128_ct', 'aes_test_cfb128_pt', 'aes_test_ofb_iv', 'aes_test_ofb_key', 'aes_test_ofb_ct', 'aes_test_ofb_pt', 'aes_test_ctr_nonce_counter', 'aes_test_ctr_key', 'aes_test_ctr_len', 'aes_test_ctr_ct', 'aes_test_ctr_pt', 'aes_test_xts_key', 'num_tests', 'aes_test_xts_data_unit', 'aes_test_xts_ct32' and 'aes_test_xts_pt32' to hint the compiler that they are free of aliasing\n"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 1748,
+                  "startColumn": 1
+                }
+              }
+            }
+          ],
+          "relatedLocations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 1795,
+                  "startColumn": 25
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 1800,
+                  "startColumn": 25
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 1859,
+                  "startColumn": 25
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 1864,
+                  "startColumn": 25
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 1927,
+                  "startColumn": 22
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 1928,
+                  "startColumn": 22
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 1949,
+                  "startColumn": 26
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 1955,
+                  "startColumn": 25
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 1950,
+                  "startColumn": 25
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 1954,
+                  "startColumn": 26
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 1990,
+                  "startColumn": 22
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 1991,
+                  "startColumn": 22
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 2012,
+                  "startColumn": 26
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 2018,
+                  "startColumn": 25
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 2013,
+                  "startColumn": 25
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 2017,
+                  "startColumn": 26
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 2052,
+                  "startColumn": 32
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 2053,
+                  "startColumn": 22
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 2059,
+                  "startColumn": 15
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 2063,
+                  "startColumn": 26
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 2069,
+                  "startColumn": 25
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 2064,
+                  "startColumn": 25
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 2068,
+                  "startColumn": 26
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 2094,
+                  "startColumn": 16
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 2094,
+                  "startColumn": 44
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 2113,
+                  "startColumn": 22
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 2102,
+                  "startColumn": 21
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 2114,
+                  "startColumn": 21
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 2116,
+                  "startColumn": 24
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 2123,
+                  "startColumn": 26
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 2132,
+                  "startColumn": 25
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 2124,
+                  "startColumn": 25
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/codee/performance-demos/MbedTLS/v3.1.0/library/aes.c"
+                },
+                "region": {
+                  "startLine": 2131,
+                  "startColumn": 26
+                }
+              },
+              "message": {
+                "text": "Usage"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
